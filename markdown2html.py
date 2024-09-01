@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """
-This is a script to convert a Markdown file to HTML.
+A script to convert a Markdown file to HTML.
 
 Usage:
     ./markdown2html.py [input_file] [output_file]
 
 Arguments:
-    input_file: the name of the Markdown file to be converted
-    output_file: the name of the output HTML file
+    input_file: name of the Markdown file to be converted
+    output_file: name of the output HTML file
 
 Example:
     ./markdown2html.py README.md README.html
@@ -18,16 +18,16 @@ import pathlib
 import re
 
 
-def convert_md_to_html(input_file, output_file):
+def convert_markdown_to_html(input_file, output_file):
     '''
-    Converts markdown file to HTML file
+    Converts markdown files to HTML files
     '''
     # Read the contents of the input file
     with open(input_file, encoding='utf-8') as f:
-        md_content = f.readlines()
+        markdown_content = f.readlines()
 
     html_content = []
-    for line in md_content:
+    for line in markdown_content:
         # Check if the line is a heading
         match = re.match(r'(#){1,6} (.*)', line)
         if match:
@@ -59,6 +59,5 @@ if __name__ == '__main__':
         sys.exit(1)
 
     # Convert the markdown file to HTML
-    convert_md_to_html(args.input_file, args.output_file)
-
-
+    convert_markdown_to_html(args.input_file, args.output_file)
+    
