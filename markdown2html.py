@@ -49,24 +49,26 @@ def parse_paragraphs(lines):
     html_lines = []
     paragraph = []
 
-    for line in lines:
-        stripped_line = line.strip()
-        if stripped_line:
+    index = 0
+    while index < len(lines):
+        line = lines[index].strip()
+        if line:
             if paragraph:
-                paragraph.append(stripped_line)
+                paragraph.append(line)
             else:
-                paragraph = [stripped_line]
+                paragraph = [line]
         else:
             if paragraph:
                 html_lines.append('<p>\n' + process_text
                                   ('\n'.join(paragraph)) + '\n</p>')
                 paragraph = []
+        index += 1
 
     if paragraph:
         html_lines.append('<p>\n' + process_text
                           ('\n'.join(paragraph)) + '\n</p>')
 
-    return html_lines
+    return html_lines, index
 
 
 def process_text(text):
