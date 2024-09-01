@@ -1,4 +1,19 @@
 #!/usr/bin/python3
+"""
+markdown2html.py
+
+A script to convert Markdown files to HTML. It supports:
+- Headings
+- Unordered lists
+- Ordered lists
+- Paragraphs
+- Bold and italic text
+- Custom Markdown syntax: MD5 hashes and character removal
+
+Usage:
+    ./markdown2html.py input_file output_file
+"""
+
 import sys
 import os
 import re
