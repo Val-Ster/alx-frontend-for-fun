@@ -36,9 +36,14 @@ def parse_heading(line):
 def parse_list(lines, index, list_type):
     """Parse lines starting from an index to generate an HTML list."""
     html_lines = [f"<{list_type}>"]
-    while index < len(lines) and lines[index].startswith(("- ", "* ")):
-        item = lines[index][2:].strip()
-        html_lines.append(f"<li>{process_text(item)}</li>")
+    while index < len(lines) and (lines[index].startswith(("- ", "* ")) or
+                                  re.match(r'^\d+\.\s', lines[index])):
+        if list_type == "ul" and lines[index].startswith("- "):
+            item = lines[index][2:].strip()
+            html_lines.append(f"<li>{process_text(item)}</li>")
+        elif list_type == "ol" and re.match(r'^\d+\.\s', lines[index]):
+            item = lines[index].split('.', 1)[1].strip()
+            html_lines.append(f"<li>{process_text(item)}</li>")
         index += 1
     html_lines.append(f"</{list_type}>")
     return html_lines, index
@@ -108,7 +113,7 @@ def convert_markdown_to_html(input_file, output_file):
                 html_file.write("\n".join(list_lines) + '\n')
                 continue  # Skip the increment as it's already handled
 
-            elif line.startswith("* "):
+            elif re.match(r'^\d+\.\s', line):
                 list_lines, index = parse_list(lines, index, "ol")
                 html_file.write("\n".join(list_lines) + '\n')
                 continue  # Skip the increment as it's already handled
