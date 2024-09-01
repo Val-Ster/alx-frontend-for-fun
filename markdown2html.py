@@ -77,7 +77,7 @@ def parse_paragraphs(lines):
 
 
 def process_text(text):
-    """Process text to replace Markdown bold & italic syntax with HTML tag."""
+    """Replaces Md bold & italic with HTML tags & handle custom Md."""
     # Replace **text** with <b>text</b>
     text = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', text)
     # Replace __text__ with <em>text</em>
