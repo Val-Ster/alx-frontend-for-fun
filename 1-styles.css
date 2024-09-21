@@ -1,0 +1,22 @@
+h2 a {
+  position: relative;
+  color: rgb(240, 20, 64);
+  text-decoration: none;
+}
+
+h2 a::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(240, 20, 64);
+  visibility: hidden;
+  transition: all 0.4s ease-in-out;
+}
+
+h2 a:hover::before {
+  visibility: visible;
+  width: 100%;
+}

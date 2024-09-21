@@ -1,0 +1,36 @@
+ul {
+  justify-content: center;
+  display: flex;
+}
+li {
+  border: 2.5px solid #727272;
+  background-color: #f7f7f7;
+  display: grid;
+  height: 400px;
+  width: 300px;
+  list-style: none;
+
+  border-radius: 7px;
+  font-size: 37px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 10px;
+  background-repeat: no-repeat;
+  /*background-image: url("0-sprite.png");*/
+}
+
+span.i-html {
+  background: url("0-sprite.png") no-repeat -1px -15px;
+  height: 365px;
+}
+
+span.i-css {
+  background: url("0-sprite.png") no-repeat -280px -15px;
+  height: 365px;
+}
+
+span.i-js {
+  background: url("0-sprite.png") no-repeat -570px -15px;
+  height: 365px;
+}
